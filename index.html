@@ -5,20 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="stylesheet" href="src/styles/styles.css">
     <title>Clima Cep</title>
 </head>
 <body>
-    <div id="container">
+<div id="container">
         <form id="search">
             <i class="fa-solid fa-location-dot"></i>
-            <input type="search" name="city_name" id="city_name" placeholder="Buscar cidade">
+            <input 
+                type="search"
+                name="city_name"
+                id="city_name"
+                placeholder="Buscar cidade"
+             >
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </form>
-        <button type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-    </div>
-    <div id="weather">
+    <div id="weather" class="show">
         <h1 id="title">Diadema, SP</h1>
         <div id="infos">
             <div id="temp">
@@ -32,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <div id="orther_infos">
+            <div id="other_infos">
                 <div class="info">
                     <i id="temp_max_icon"class="fa-solid fa-temperature-high"></i>
                     <div>
@@ -72,6 +76,7 @@
             </div>
         </div>
     </div>
+</div>
     <div id="alert"></div>
 </body>
 </html>
