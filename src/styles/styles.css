@@ -41,6 +41,9 @@ body {
     border: none;
     cursor: pointer;
 }
+.abrirMenu {
+    transition: all 1s ease-in-out;
+}
 #weather {
     display: none;
     margin-top: 20px;
@@ -50,6 +53,7 @@ body {
     width: 40vw;
     height: 50vh;
     display: block;
+    
 
 }
 #weather #title {

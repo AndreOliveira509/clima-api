@@ -1,3 +1,4 @@
+
 //Fazer q a pag n atualize qnd lupa é clicicada
 document.querySelector('#search').addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -59,4 +60,35 @@ function showInfo(json){
 // a msg de erro no html
 function showAlert(msg) {
     document.querySelector('#alert').innerHTML = msg;
+}
+// mostrar hora em tempo real
+function Carregar(){
+    var hratual = new Date();
+    var hr = hratual.getHours();
+    var minatual = new Date();
+    var min = minatual.getMinutes().toString().padStart(2, '0');
+    var hrdia = document.getElementById("horadia");
+    var fundo = document.getElementById("temp");
+
+    if (fundo) { // Verifica se a div foi encontrada
+        if (hr >= 6 && hr < 12) {
+            hrdia.innerHTML = `${hr}:${min}, Bom dia!`;
+            fundo.style.backgroundColor = "#4FC3F7"; // Cor para manhã #4FC3F7"
+            hrdia.style.fontSize = "1.5em";
+        } else if (hr >= 12 && hr < 18) {
+            hrdia.innerHTML = `${hr}:${min}, Boa Tarde!`;
+            fundo.style.backgroundColor = "#CC5500"; // Cor para tarde #FF7F50";
+            hrdia.style.fontSize = "1.5em";
+
+        } else if (hr >= 18 && hr < 24) {
+            hrdia.innerHTML = `${hr}:${min}, Boa Noite!`;
+            fundo.style.backgroundColor = "#191970"; // Cor para noite
+            hrdia.style.fontSize = "1.5em";
+        } else {
+            hrdia.innerHTML = `${hr}:${min}, Boa Madrugada!`;
+            fundo.style.backgroundColor = "#2C6C8B"; // Cor para madrugada
+            hrdia.style.fontSize = "1.5em";
+        }
+    } else {
+    }
 }
