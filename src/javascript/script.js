@@ -37,6 +37,7 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
 function showInfo(json){
     showAlert('');
     document.querySelector("#weather").classList.add('show');
+    document.querySelector("#header").classList.add('show');
 
     document.querySelector("#title").innerHTML = `${json.city}, ${json.country}`;
     
@@ -69,24 +70,29 @@ function Carregar(){
     var min = minatual.getMinutes().toString().padStart(2, '0');
     var hrdia = document.getElementById("horadia");
     var fundo = document.getElementById("temp");
+    var header = document.getElementById("header")
 
     if (fundo) { // Verifica se a div foi encontrada
         if (hr >= 6 && hr < 12) {
             hrdia.innerHTML = `${hr}:${min}, Bom dia!`;
             fundo.style.backgroundColor = "#4FC3F7"; // Cor para manhã #4FC3F7"
+            header.style.backgroundColor = "#4FC3F7";
             hrdia.style.fontSize = "1.5em";
         } else if (hr >= 12 && hr < 18) {
             hrdia.innerHTML = `${hr}:${min}, Boa Tarde!`;
             fundo.style.backgroundColor = "#CC5500"; // Cor para tarde #FF7F50";
+            header.style.backgroundColor = "#CC5500";
             hrdia.style.fontSize = "1.5em";
 
         } else if (hr >= 18 && hr < 24) {
             hrdia.innerHTML = `${hr}:${min}, Boa Noite!`;
             fundo.style.backgroundColor = "#191970"; // Cor para noite
+            header.style.backgroundColor = "#191970";
             hrdia.style.fontSize = "1.5em";
         } else {
             hrdia.innerHTML = `${hr}:${min}, Boa Madrugada!`;
             fundo.style.backgroundColor = "#2C6C8B"; // Cor para madrugada
+            header.style.backgroundColor = "#2C6C8B";
             hrdia.style.fontSize = "1.5em";
         }
     } else {
