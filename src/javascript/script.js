@@ -71,30 +71,61 @@ function Carregar(){
     var hrdia = document.getElementById("horadia");
     var fundo = document.getElementById("temp");
     var header = document.getElementById("header")
+    let vermaisbutton = document.getElementById("vermaisbnt");
 
     if (fundo) { // Verifica se a div foi encontrada
         if (hr >= 6 && hr < 12) {
             hrdia.innerHTML = `${hr}:${min}, Bom dia!`;
             fundo.style.backgroundColor = "#4FC3F7"; // Cor para manhã #4FC3F7"
             header.style.backgroundColor = "#4FC3F7";
+            vermaisbutton.style.backgroundColor = "#4FC3F7";
             hrdia.style.fontSize = "1.5em";
         } else if (hr >= 12 && hr < 18) {
             hrdia.innerHTML = `${hr}:${min}, Boa Tarde!`;
             fundo.style.backgroundColor = "#CC5500"; // Cor para tarde #FF7F50";
             header.style.backgroundColor = "#CC5500";
+            vermaisbutton.style.backgroundColor = "#CC5500";
             hrdia.style.fontSize = "1.5em";
 
         } else if (hr >= 18 && hr < 24) {
             hrdia.innerHTML = `${hr}:${min}, Boa Noite!`;
             fundo.style.backgroundColor = "#191970"; // Cor para noite
             header.style.backgroundColor = "#191970";
+            vermaisbutton.style.backgroundColor = "#191970";
             hrdia.style.fontSize = "1.5em";
         } else {
             hrdia.innerHTML = `${hr}:${min}, Boa Madrugada!`;
             fundo.style.backgroundColor = "#2C6C8B"; // Cor para madrugada
             header.style.backgroundColor = "#2C6C8B";
+            vermaisbutton.style.backgroundColor = "#2C6C8B";
             hrdia.style.fontSize = "1.5em";
         }
     } else {
     }
 }
+// Função para o usuario ver mais coisas
+
+function Vermais() {
+    let mostrar = document.getElementById("other_infos");
+    let vermaisbutton = document.getElementById("vermaisbnt");
+    let weather = document.getElementById("weather");
+
+    if (mostrar.style.display === "none" || mostrar.style.display === "") {
+        mostrar.style.display = "grid"; 
+        setTimeout(() => {
+            mostrar.classList.add("show");
+        }, 100); 
+        weather.style.height = "71vh";
+        vermaisbutton.textContent = "Ver menos";
+    } else {
+        mostrar.classList.remove("show");
+        setTimeout(() => {
+            mostrar.style.display = "none"; 
+        }, 0); 
+        vermaisbutton.textContent = "Ver mais";
+        weather.style.height = "36vh";
+    }
+}
+
+
+
