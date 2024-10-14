@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="src/styles/styles.css">
-    <title>Clima Cep</title>
+    <title>Clima CEP</title>
 </head>
 <body>
 <div id="prin_container">
@@ -18,10 +18,11 @@
             <form id="search">
                 <i class="fa-solid fa-location-dot"></i>
                 <input
-                    type="search"
+                    type="number"
                     name="city_name"
                     id="city_name"
-                    placeholder="Buscar cidade"
+                    maxlength="8"
+                    placeholder="Buscar CEP"
                  >
                 <button type="submit" onclick="Carregar()">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -85,6 +86,7 @@
                         </div>
                     </div>
                 </div>
+                </p>
             </div>
         </div>
         <div id="alert"></div>

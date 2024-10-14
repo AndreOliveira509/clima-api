@@ -1,23 +1,34 @@
-
-//Fazer q a pag n atualize qnd lupa é clicicada
 document.querySelector('#search').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const cityName = document.querySelector('#city_name').value;
-// Se n hover nd apacerá uma msg de erro
-    if(!cityName) {
-        return showAlert('Digite uma cidade!');
+// Api do viaCEP
+
+    const cep = document.querySelector('#city_name').value;
+
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await response.json();
+    const cityName = data.localidade;
+    const logradouro = data.logradouro;
+    const bairro = data.bairro;
+    const uf = data.uf;
+
+    // Verifica se os dados foram retornados corretamente
+    if (!cityName) {
+        return showAlert('Digite um CEP válido!');
     }
-// importação API
+
+
+    // Montando a URL do Google Maps corretamente
+
+    // API do OpenWeatherMap
     const apiKey = 'affff9ad98f321cfc2baf6cbba1320cb';
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(cityName)}&appid=${apiKey}&units=metric&lang=pt_br`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&appid=${apiKey}&units=metric&lang=pt_br`;
     
     const results = await fetch(apiUrl);
     const json = await results.json();
 
-// condicional para pegar tudos os dados, e caso n for possivel aparecer na tela terá um aviso
-    if (json.cod === 200){
-        // recebendo infomações
+    // Se a API retornar sucesso, mostrar informações, caso contrário, mostrar alerta
+    if (json.cod === 200) {
         showInfo({
             city: json.name,
             country: json.sys.country,
@@ -27,10 +38,10 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
             description: json.weather[0].description,
             tempIcon: json.weather[0].icon,
             windSpeed: json.wind.speed,
-            humidity: json.main.humidity,    
+            humidity: json.main.humidity,
         });
     } else {
-        showAlert('Não foi possivel localizar...')
+        showAlert('Não foi possível localizar...');
     }
 });
 // mostrando Informações
@@ -38,6 +49,7 @@ function showInfo(json){
     showAlert('');
     document.querySelector("#weather").classList.add('show');
     document.querySelector("#header").classList.add('show');
+
 
     document.querySelector("#title").innerHTML = `${json.city}, ${json.country}`;
     
@@ -82,7 +94,7 @@ function Carregar(){
             hrdia.style.fontSize = "1.5em";
         } else if (hr >= 12 && hr < 18) {
             hrdia.innerHTML = `${hr}:${min}, Boa Tarde!`;
-            fundo.style.backgroundColor = "#CC5500"; // Cor para tarde #FF7F50";
+            fundo.style.backgroundColor = "#CC5500"; // Cor para tarde ;
             header.style.backgroundColor = "#CC5500";
             vermaisbutton.style.backgroundColor = "#CC5500";
             hrdia.style.fontSize = "1.5em";
