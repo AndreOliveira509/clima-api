@@ -18,8 +18,6 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
     }
 
 
-    // Montando a URL do Google Maps corretamente
-
     // API do OpenWeatherMap
     const apiKey = 'affff9ad98f321cfc2baf6cbba1320cb';
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&appid=${apiKey}&units=metric&lang=pt_br`;
